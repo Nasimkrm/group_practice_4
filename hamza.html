@@ -3,10 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamza's Page</title>
+    <title>Crazy Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: backgroundChange 5s infinite alternate;
+        }
+
+        @keyframes backgroundChange {
+            0% { background-color: #ff0055; }
+            25% { background-color: #00ff55; }
+            50% { background-color: #5500ff; }
+            75% { background-color: #ff5500; }
+            100% { background-color: #00ffff; }
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-150px);
+            }
+        }
+
+        h1 {
+            position: absolute;
+            color: white;
+            font-size: 3em;
+            animation: fadeIn 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <h1>This is Hamza's page. Welcome!</h1>
-    <p>We are currently learning how to use pull/merge requests.</p>
+    <h1>Welcome to the Crazy Zone!</h1>
+    <div class="box" style="top: 30%; left: 20%; animation-delay: 0s;"></div>
+    <div class="box" style="top: 60%; left: 50%; animation-delay: 0.5s;"></div>
+    <div class="box" style="top: 20%; left: 80%; animation-delay: 1s;"></div>
+    <div class="box" style="top: 70%; left: 30%; animation-delay: 1.5s;"></div>
+    <div class="box" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
+
+    <script>
+        // Change the positions of boxes randomly every second
+        setInterval(() => {
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+                box.style.top = Math.random() * 100 + 'vh';
+                box.style.left = Math.random() * 100 + 'vw';
+            });
+        }, 1000);
+    </script>
 </body>
 </html>
