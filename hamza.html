@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crazy Animation</title>
+    <title>Enhanced Crazy Animation</title>
     <style>
         body {
             margin: 0;
@@ -52,6 +52,17 @@
             0% { opacity: 0.5; }
             100% { opacity: 1; }
         }
+
+        .follower {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+        }
+
     </style>
 </head>
 <body>
@@ -62,6 +73,8 @@
     <div class="box" style="top: 70%; left: 30%; animation-delay: 1.5s;"></div>
     <div class="box" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
 
+    <div class="follower" id="follower"></div>
+
     <script>
         // Change the positions of boxes randomly every second
         setInterval(() => {
@@ -71,6 +84,12 @@
                 box.style.left = Math.random() * 100 + 'vw';
             });
         }, 1000);
+
+        // Mouse follower functionality
+        const follower = document.getElementById('follower');
+        document.addEventListener('mousemove', (e) => {
+            follower.style.transform = `translate(${e.clientX - window.innerWidth/2}px, ${e.clientY - window.innerHeight/2}px) scale(1.5)`;
+        });
     </script>
 </body>
 </html>
